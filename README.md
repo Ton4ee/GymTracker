@@ -126,8 +126,10 @@ Prerequisites
 
 # Before running the project, make sure you have installed:
 
-.NET SDK
-Node.js and npm
-Angular CLI
-PostgreSQL
-Git
+.NET SDK,
+Node.js and npm,
+Angular CLI,
+PostgreSQL,
+Git.
+
+#Images:
