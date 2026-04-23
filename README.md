@@ -84,31 +84,31 @@ giving users an interactive experience for managing their fitness information
 The frontend and backend communicate through HTTP requests, while PostgreSQL stores the application data.
 
 # Main Modules
-Dashboard
+### Dashboard
 
 The dashboard provides a quick overview of the application and key activity.
 
-Exercises
+### Exercises
 
 Users can browse, search, and filter exercises, and mark selected exercises as favorites.
 
-Workout Plans
+### Workout Plans
 
 Users can create structured workout plans and organize exercises into reusable routines.
 
-Workout Sessions
+### Workout Sessions
 
 Users can log completed training sessions and maintain a history of workouts.
 
-Progress Tracking
+### Progress Tracking
 
 Users can record progress data such as body weight and view visual progress over time using charts.
 
-External Exercise Import
+### External Exercise Import
 
 The project supports importing and synchronizing exercise data from the wger API.
 
-API Overview
+### API Overview
 
 The backend exposes REST API endpoints used by the Angular frontend.
 
