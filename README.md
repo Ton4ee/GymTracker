@@ -56,7 +56,7 @@ GymTracker/
 ├── GymTracker.sln
 ├── README.md
 └── .gitignore
-
+```
 
 How It Works
 
