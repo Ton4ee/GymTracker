@@ -58,11 +58,11 @@ GymTracker/
 └── .gitignore
 ```
 
-#How It Works
+# How It Works
 
 GymTracker is split into two main parts: the backend API and the frontend client.
 
-##Backend
+## Backend
 
 The backend is built with ASP.NET Core Web API and is responsible for:
 
@@ -72,7 +72,7 @@ exposing REST API endpoints
 managing exercises, workout plans, workout sessions, favorites, and progress entries
 importing and synchronizing external exercise data
 seeding initial data for development
-##Frontend
+## Frontend
 
 The frontend is built with Angular and is responsible for:
 
@@ -83,7 +83,7 @@ giving users an interactive experience for managing their fitness information
 
 The frontend and backend communicate through HTTP requests, while PostgreSQL stores the application data.
 
-#Main Modules
+# Main Modules
 Dashboard
 
 The dashboard provides a quick overview of the application and key activity.
@@ -112,7 +112,7 @@ API Overview
 
 The backend exposes REST API endpoints used by the Angular frontend.
 
-Examples of supported functionality include:
+# Examples of supported functionality include:
 
 retrieving exercises
 filtering and searching exercises
@@ -124,7 +124,7 @@ managing favorite exercises
 Getting Started
 Prerequisites
 
-Before running the project, make sure you have installed:
+# Before running the project, make sure you have installed:
 
 .NET SDK
 Node.js and npm
