@@ -132,7 +132,7 @@ Angular CLI,
 PostgreSQL,
 Git.
 
-#Preview
+# Preview
 
 <img width="1905" height="901" alt="image" src="https://github.com/user-attachments/assets/3114d4da-25b2-4775-9c68-05e693ffd7b3" />
 <img width="1910" height="904" alt="image" src="https://github.com/user-attachments/assets/4d732f26-c573-4fdf-93d0-5a6170cb2ccf" />
