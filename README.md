@@ -1,176 +1,70 @@
-# GymTracker
+# GymTracker API
 
-GymTracker is a full-stack fitness tracking web application built to help users manage workouts, discover exercises, create workout plans, log training sessions, and track progress over time.
+GymTracker is an ASP.NET Core Web API for organizing fitness data. It uses Entity Framework Core with PostgreSQL and includes migrations, development seed data, Swagger/OpenAPI documentation, and synchronization with the WGER exercise API.
 
-It uses **ASP.NET Core Web API** for the backend, **Angular** for the frontend, and **PostgreSQL** for data storage. The project also integrates external exercise data from the **wger API**.
+The current public repository contains the backend API. The previous frontend path was an unusable Git reference without `.gitmodules`, so this project is not presented as a full-stack application until the frontend source is restored correctly.
 
----
+## Verified functionality
 
-## Features
+- Exercise browsing, searching, filtering, favorites, and WGER synchronization
+- Reusable workout plans with ordered exercises
+- Completed workout sessions and exercise details
+- Body-weight history
+- Dashboard totals and recent activity
+- User-scoped plans, sessions, favorites, and weight records
+- EF Core migrations and PostgreSQL persistence
 
-- Dashboard overview
-- Exercise browsing and search
-- Exercise filtering
-- Favorite exercises
-- Workout plan creation and management
-- Workout session logging
-- Progress tracking
-- Progress visualization with charts
-- External exercise import and synchronization
-- Development seed data
-- REST API communication between frontend and backend
+## Technology
 
----
-
-## Tech Stack
-
-### Frontend
-
-- Angular
-- TypeScript
-- HTML
-- SCSS
-- Chart.js
-
-### Backend
-
+- C# and .NET 10
 - ASP.NET Core Web API
-- Entity Framework Core
+- Entity Framework Core and Npgsql
 - PostgreSQL
-- Npgsql
+- Swagger/OpenAPI
+- WGER API integration
 
-### External Integration
-
-- wger Exercise API
-
----
-
-## Project Structure
+## Project structure
 
 ```text
-GymTracker/
-├── backend/
-│   └── GymTracker.Api/
-├── frontend/
-│   └── gymtracker-client/
-├── GymTracker.sln
-├── README.md
-└── .gitignore
+backend/GymTracker.Api/
+├── Controllers/
+├── Data/
+├── Dtos/
+├── Entities/
+├── Migrations/
+├── Services/
+└── Program.cs
 ```
 
-# How It Works
+## Configuration
 
-GymTracker is split into two main parts: the backend API and the frontend client.
+Copy `backend/GymTracker.Api/appsettings.Example.json` to `appsettings.Local.json`, or use environment variables:
 
-## Backend
+```text
+ConnectionStrings__DefaultConnection
+Wger__ApiToken
+```
 
-The backend is built with ASP.NET Core Web API and is responsible for:
+Do not commit local configuration. The database credentials and WGER token previously committed to this repository must be rotated. Removing them from the current branch does not remove them from Git history.
 
-handling business logic
-connecting to the PostgreSQL database
-exposing REST API endpoints
-managing exercises, workout plans, workout sessions, favorites, and progress entries
-importing and synchronizing external exercise data
-seeding initial data for development
-## Frontend
+## Run locally
 
-The frontend is built with Angular and is responsible for:
+Requirements: .NET 10 SDK and PostgreSQL.
 
-displaying the user interface
-consuming backend API endpoints
-rendering dashboard data, charts, forms, and lists
-giving users an interactive experience for managing their fitness information
+```bash
+dotnet restore GymTracker.sln
+dotnet ef database update --project backend/GymTracker.Api
+dotnet run --project backend/GymTracker.Api
+```
 
-The frontend and backend communicate through HTTP requests, while PostgreSQL stores the application data.
+Swagger is available at the URL printed by ASP.NET Core when the API runs in development.
 
-# Main Modules
-### Dashboard
+## Profile scoping and security limitation
 
-The dashboard provides a quick overview of the application and key activity.
+Requests are scoped by the `X-Profile-Key` header. Missing headers use a local default profile. This is a convenience mechanism, not authentication or authorization; clients that know another profile key can select it. The API should not be exposed as a multi-user service without a verified authentication and authorization layer.
 
-### Exercises
+## Current limitations
 
-Users can browse, search, and filter exercises, and mark selected exercises as favorites.
-
-### Workout Plans
-
-Users can create structured workout plans and organize exercises into reusable routines.
-
-### Workout Sessions
-
-Users can log completed training sessions and maintain a history of workouts.
-
-### Progress Tracking
-
-Users can record progress data such as body weight and view visual progress over time using charts.
-
-### External Exercise Import
-
-The project supports importing and synchronizing exercise data from the wger API.
-
-### API Overview
-
-The backend exposes REST API endpoints used by the Angular frontend.
-
-# Examples of supported functionality include:
-
-retrieving exercises
-filtering and searching exercises
-importing exercise data from external APIs
-creating and reading workout plans
-creating and reading workout sessions
-saving progress entries
-managing favorite exercises
-Getting Started
-Prerequisites
-
-# Before running the project, make sure you have installed:
-
-.NET SDK,
-Node.js and npm,
-Angular CLI,
-PostgreSQL,
-Git.
-
-# Preview
-
-<img width="1905" height="901" alt="image" src="https://github.com/user-attachments/assets/3114d4da-25b2-4775-9c68-05e693ffd7b3" />
-<br>
-<br>
-<img width="1910" height="904" alt="image" src="https://github.com/user-attachments/assets/4d732f26-c573-4fdf-93d0-5a6170cb2ccf" />
-<br>
-<br>
-<img width="1916" height="900" alt="image" src="https://github.com/user-attachments/assets/110c95d1-312d-4d2e-af92-31e369e95530" />
-<br>
-<br>
-<img width="1907" height="912" alt="image" src="https://github.com/user-attachments/assets/bc9f1e57-d390-46b0-8658-a18741cd86c3" />
-<br>
-<br>
-<img width="1918" height="906" alt="image" src="https://github.com/user-attachments/assets/def469bb-d2f9-4a64-8980-da940f800a11" />
-<br>
-<br>
-<img width="1919" height="905" alt="image" src="https://github.com/user-attachments/assets/9b691915-7760-4521-a230-bc828b18866c" />
-<br>
-<br>
-<img width="1919" height="911" alt="image" src="https://github.com/user-attachments/assets/acca5ca0-504a-48cc-96b8-87cfae9aa5d6" />
-<br>
-<br>
-<img width="1917" height="914" alt="image" src="https://github.com/user-attachments/assets/e826328f-010e-4750-99ce-8999c292a463" />
-<br>
-<br>
-<img width="1919" height="905" alt="image" src="https://github.com/user-attachments/assets/10a33718-9a60-477a-afea-88badca16c6d" />
-<br>
-<br>
-<img width="1919" height="916" alt="image" src="https://github.com/user-attachments/assets/a647ec54-60db-47fc-b6fe-fc7e6004aecc" />
-<br>
-<br>
-<img width="1916" height="910" alt="image" src="https://github.com/user-attachments/assets/c9aa5eb6-9de0-48de-8b6f-b034751c8bf5" />
-<br>
-<br>
-<img width="1907" height="909" alt="image" src="https://github.com/user-attachments/assets/1e069726-c054-49af-804a-7a92f97aaeeb" />
-<br>
-
-
-
-
-
+- Frontend source is not included in a usable form.
+- The repository has no automated test project.
+- Several zero-byte service/interface placeholders remain and should only be removed after a successful .NET build confirms they are unused.
