@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Plan workouts, discover exercises, log sessions, and track your progress.">
+  <meta name="theme-color" content="#09110f">
+  <title>GymTracker — Train with intent</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#dashboard" aria-label="GymTracker home"><span class="brand-mark">G</span><span>GYM<span>TRACKER</span></span></a>
+      <nav aria-label="Main navigation">
+        <a href="#dashboard" data-route="dashboard">Overview</a>
+        <a href="#exercises" data-route="exercises">Exercises</a>
+        <a href="#plans" data-route="plans">Workout plans</a>
+        <a href="#sessions" data-route="sessions">Workout log</a>
+        <a href="#progress" data-route="progress">Progress</a>
+      </nav>
+      <div class="profile-note"><span class="status-dot"></span><div><strong>Browser-scoped demo</strong><small>Profile key saved locally</small></div></div>
+      <a class="portfolio-link" href="https://ton4ee.github.io/" target="_blank" rel="noreferrer">Antonio Puceski <span>↗</span></a>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <button id="menuButton" class="icon-button menu-button" aria-label="Open menu">☰</button>
+        <div><p id="eyebrow">TODAY</p><h1 id="pageTitle">Your training overview</h1></div>
+        <button class="primary compact" data-action="quick-session">+ Log workout</button>
+      </header>
+      <section id="app" aria-live="polite"><div class="loading"><span></span>Loading your training space…</div></section>
+    </main>
+  </div>
+
+  <div id="modal" class="modal-backdrop" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" data-action="close-modal" aria-label="Close">×</button>
+      <div id="modalContent"></div>
+    </section>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js" defer></script>
+</body>
+</html>
