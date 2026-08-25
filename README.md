@@ -1,8 +1,6 @@
-# GymTracker API
+# GymTracker
 
-GymTracker is an ASP.NET Core Web API for organizing fitness data. It uses Entity Framework Core with PostgreSQL and includes migrations, development seed data, Swagger/OpenAPI documentation, and synchronization with the WGER exercise API.
-
-The current public repository contains the backend API. The previous frontend path was an unusable Git reference without `.gitmodules`, so this project is not presented as a full-stack application until the frontend source is restored correctly.
+GymTracker is a full-stack fitness application for discovering exercises, creating reusable workout plans, logging completed sessions, and tracking body weight. The responsive browser interface is served by an ASP.NET Core API backed by PostgreSQL.
 
 ## Verified functionality
 
@@ -16,6 +14,7 @@ The current public repository contains the backend API. The previous frontend pa
 
 ## Technology
 
+- Responsive single-page web interface (HTML, CSS, JavaScript)
 - C# and .NET 10
 - ASP.NET Core Web API
 - Entity Framework Core and Npgsql
@@ -33,6 +32,7 @@ backend/GymTracker.Api/
 ├── Entities/
 ├── Migrations/
 ├── Services/
+├── wwwroot/
 └── Program.cs
 ```
 
@@ -57,7 +57,18 @@ dotnet ef database update --project backend/GymTracker.Api
 dotnet run --project backend/GymTracker.Api
 ```
 
-Swagger is available at the URL printed by ASP.NET Core when the API runs in development.
+Open the URL printed by ASP.NET Core to use the application. Swagger is available at `/swagger` in development.
+
+## Deploy on Railway
+
+The included `Dockerfile` and `railway.json` package the frontend and API as one service.
+
+1. Create a Railway project from this GitHub repository.
+2. Add a PostgreSQL service to the same project.
+3. Set the app service variable `DATABASE_URL` to `${{Postgres.DATABASE_URL}}` (adjust `Postgres` if the database service has a different name).
+4. Generate a public domain for the app service. Railway uses `/health` to verify the deployment.
+
+Database migrations and initial exercise import run automatically on first startup.
 
 ## Profile scoping and security limitation
 
@@ -65,6 +76,6 @@ Requests are scoped by the `X-Profile-Key` header. Missing headers use a local d
 
 ## Current limitations
 
-- Frontend source is not included in a usable form.
 - The repository has no automated test project.
 - Several zero-byte service/interface placeholders remain and should only be removed after a successful .NET build confirms they are unused.
+- Browser profiles are separated with a locally generated `X-Profile-Key`; this is a portfolio demo mechanism, not production authentication.
