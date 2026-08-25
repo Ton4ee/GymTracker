@@ -240,6 +240,14 @@ public class ExerciseImportService
     {
         if (translation.TryGetProperty("language", out var language))
         {
+            // wger currently returns the English language as numeric id 2.
+            if (language.ValueKind == JsonValueKind.Number &&
+                language.TryGetInt32(out var languageId) &&
+                languageId == 2)
+            {
+                return true;
+            }
+
             if (language.ValueKind == JsonValueKind.Object)
             {
                 var candidates = new List<string>();
